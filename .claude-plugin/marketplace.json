@@ -1,0 +1,12 @@
+{
+  "name": "devorch-cli",
+  "owner": { "name": "Dev Orchestrator" },
+  "description": "The devorch Claude Code plugin, published with every devorch CLI release. Install or update it with 'devorch plugin install'.",
+  "plugins": [
+    {
+      "name": "devorch",
+      "source": "./devorch",
+      "description": "The DevOrch skills (/devorch:sdlc-drive, /devorch:step), the devorch:step-worker agent and a DevOrch MCP server, plus the companion mod that wakes an idle step session when a watched run can move, shows run position and open blockers, and answers blockers from a slash command."
+    }
+  ]
+}

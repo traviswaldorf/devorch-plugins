@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "api": {
+      "type": "stdio",
+      "command": "devorch",
+      "args": [
+        "mcp",
+        "serve",
+        "--plugin-option",
+        "apiBase=${user_config.apiBase}"
+      ]
+    }
+  }
+}

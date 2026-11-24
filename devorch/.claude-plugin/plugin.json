@@ -1,0 +1,47 @@
+{
+  "name": "devorch",
+  "version": "0.40.0",
+  "description": "The devorch plugin: the sdlc-drive and step skills, the step-worker agent and a DevOrch MCP server (the devorch CLI's `mcp serve`), plus the companion mod that watches DevOrch runs and wakes an idle /devorch:step session on platform events instead of ScheduleWakeup polling (wakeMode: auto, push or poll). Status line, /devorch-watch, /devorch-unwatch, /devorch-answer, the companion tool and a $.devorch event hook for other plugins.",
+  "author": {
+    "name": "Dev Orchestrator"
+  },
+  "license": "MIT",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "devorchExe": {
+      "type": "string",
+      "title": "devorch executable",
+      "description": "Full path of the devorch executable the mod runs for watches and answers. Leave empty to find devorch on PATH (the DEVORCH_EXE environment variable wins over both). The MCP server always runs devorch from PATH.",
+      "required": false,
+      "default": ""
+    },
+    "apiBase": {
+      "type": "string",
+      "title": "DevOrch API base URL",
+      "description": "Overrides apiBase from the DevOrch settings files for this plugin (the MCP server and run watches). Empty (the default) = use the DevOrch settings files (.devorch/settings.json, .devorch/settings.local.json, ~/.devorch/settings.json; `devorch config get --show-origin` shows what applies). Set apiBase in a settings file instead to share it with the CLI; DEVORCH_API_BASE and --base-url still win over this.",
+      "required": false,
+      "default": ""
+    },
+    "wakeMode": {
+      "type": "string",
+      "title": "Wake mode",
+      "description": "Who wakes an interactive run between steps: auto (the companion wakes the session while it is healthy, else the step skill polls with /loop + ScheduleWakeup), push (the companion only) or poll (always /loop + ScheduleWakeup). Overrides wake.mode from the DevOrch settings files. Empty (the default) = use the DevOrch settings files (.devorch/settings.json, .devorch/settings.local.json, ~/.devorch/settings.json; `devorch config get --show-origin` shows what applies).",
+      "required": false,
+      "default": ""
+    },
+    "fallbackWakeupSeconds": {
+      "type": "string",
+      "title": "Fallback wakeup (seconds)",
+      "description": "Under poll, the safety-net ScheduleWakeup the step skill sets while a worker runs (60 to 3600). Overrides wake.fallbackWakeupSeconds from the DevOrch settings files. Empty (the default) = use the DevOrch settings files (.devorch/settings.json, .devorch/settings.local.json, ~/.devorch/settings.json; `devorch config get --show-origin` shows what applies).",
+      "required": false,
+      "default": ""
+    },
+    "longPollSeconds": {
+      "type": "string",
+      "title": "Long-poll seconds",
+      "description": "When the mod's live watch keeps failing it falls back to one-shot long-polls (devorch run wait --seconds N), 5 to 25. Overrides watch.longPollSeconds from the DevOrch settings files. Empty (the default) = use the DevOrch settings files (.devorch/settings.json, .devorch/settings.local.json, ~/.devorch/settings.json; `devorch config get --show-origin` shows what applies).",
+      "required": false,
+      "default": ""
+    }
+  }
+}
