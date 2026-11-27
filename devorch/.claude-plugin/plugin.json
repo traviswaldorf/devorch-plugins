@@ -1,6 +1,6 @@
 {
   "name": "devorch",
-  "version": "0.41.0",
+  "version": "0.42.0",
   "description": "The devorch plugin: the sdlc-drive and step skills, the step-worker agent and a DevOrch MCP server (the devorch CLI's `mcp serve`), plus the companion mod that watches DevOrch runs and wakes an idle /devorch:step session on platform events instead of ScheduleWakeup polling (wakeMode: auto, push or poll). Status line, /devorch-watch, /devorch-unwatch, /devorch-answer, the companion tool and a $.devorch event hook for other plugins.",
   "author": {
     "name": "Dev Orchestrator"
